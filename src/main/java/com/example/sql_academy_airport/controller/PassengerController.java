@@ -1,6 +1,8 @@
 package com.example.sql_academy_airport.controller;
 
+import com.example.sql_academy_airport.dto.PassengerDto;
 import com.example.sql_academy_airport.model.Passenger;
+import com.example.sql_academy_airport.service.PassengerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +19,19 @@ public class PassengerController {
     }
 
     @PostMapping
-    public ResponseEntity<Passenger> create(@RequestBody Passenger passenger) {
-        return new ResponseEntity<>(passengerService.create(passenger), HttpStatus.CREATED);
+    public ResponseEntity<PassengerDto> create(@RequestBody PassengerDto passengerDto) {
+        return new ResponseEntity<>(passengerService.create(passengerDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Passenger> getById(@PathVariable Long id) {
+    public ResponseEntity<PassengerDto> getById(@PathVariable Long id) {
         return new ResponseEntity<>(passengerService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Passenger> update(@RequestBody Passenger passenger,
+    public ResponseEntity<PassengerDto> update(@RequestBody PassengerDto passengerDto,
                                           @PathVariable Long id) {
-        return new ResponseEntity<>(passengerService.update(passenger, id), HttpStatus.OK);
+        return new ResponseEntity<>(passengerService.update(passengerDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

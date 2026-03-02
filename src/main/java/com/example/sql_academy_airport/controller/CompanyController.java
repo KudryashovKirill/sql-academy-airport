@@ -1,6 +1,7 @@
 package com.example.sql_academy_airport.controller;
 
-import com.example.sql_academy_airport.model.Company;
+import com.example.sql_academy_airport.dto.CompanyDto;
+import com.example.sql_academy_airport.service.CompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,26 +11,26 @@ import java.util.Map;
 @RestController
 @RequestMapping("/company")
 public class CompanyController {
-    private CompanyService companyService;
+    private final CompanyService companyService;
 
     public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
     }
 
     @PostMapping
-    public ResponseEntity<Company> create(@RequestBody Company company) {
-        return new ResponseEntity<>(companyService.create(company), HttpStatus.CREATED);
+    public ResponseEntity<CompanyDto> create(@RequestBody CompanyDto companyDto) {
+        return new ResponseEntity<>(companyService.create(companyDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Company> getById(@PathVariable Long id) {
+    public ResponseEntity<CompanyDto> getById(@PathVariable Long id) {
         return new ResponseEntity<>(companyService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Company> update(@RequestBody Company company,
+    public ResponseEntity<CompanyDto> update(@RequestBody CompanyDto companyDto,
                                           @PathVariable Long id) {
-        return new ResponseEntity<>(companyService.update(company, id), HttpStatus.OK);
+        return new ResponseEntity<>(companyService.update(companyDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,8 @@
 package com.example.sql_academy_airport.controller;
 
+import com.example.sql_academy_airport.dto.TripDto;
 import com.example.sql_academy_airport.model.Trip;
+import com.example.sql_academy_airport.service.TripService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +19,19 @@ public class TripController {
     }
 
     @PostMapping
-    public ResponseEntity<Trip> create(@RequestBody Trip trip) {
-        return new ResponseEntity<>(tripService.create(trip), HttpStatus.CREATED);
+    public ResponseEntity<TripDto> create(@RequestBody TripDto tripDto) {
+        return new ResponseEntity<>(tripService.create(tripDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Trip> getById(@PathVariable Long id) {
+    public ResponseEntity<TripDto> getById(@PathVariable Long id) {
         return new ResponseEntity<>(tripService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Trip> update(@RequestBody Trip Trip,
+    public ResponseEntity<TripDto> update(@RequestBody TripDto tripDto,
                                           @PathVariable Long id) {
-        return new ResponseEntity<>(tripService.update(Trip, id), HttpStatus.OK);
+        return new ResponseEntity<>(tripService.update(tripDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
