@@ -1,7 +1,6 @@
 package com.example.sql_academy_airport.service;
 
 import com.example.sql_academy_airport.dto.PassengerDto;
-import com.example.sql_academy_airport.model.Passenger;
 import com.example.sql_academy_airport.util.PassengerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 

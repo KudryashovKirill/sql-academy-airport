@@ -1,7 +1,6 @@
 package com.example.sql_academy_airport.service;
 
-import com.example.sql_academy_airport.dto.TripDto;
-import com.example.sql_academy_airport.model.Trip;
+import com.example.sql_academy_airport.dto.PaymentDto;
 import com.example.sql_academy_airport.util.TripMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,19 +17,19 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public TripDto create(TripDto tripDto) {
-        Trip trip = mapper.toEntity(tripDto);
+    public PaymentDto create(PaymentDto paymentDto) {
+        Trip trip = mapper.toEntity(paymentDto);
         return mapper.toDto(tripRepository.create(trip));
     }
 
     @Override
-    public TripDto getById(Long id) {
+    public PaymentDto getById(Long id) {
         return mapper.toDto(tripRepository.getById(id));
     }
 
     @Override
-    public TripDto update(TripDto tripDto, Long id) {
-        Trip trip = mapper.toEntity(tripDto);
+    public PaymentDto update(PaymentDto paymentDto, Long id) {
+        Trip trip = mapper.toEntity(paymentDto);
         return mapper.toDto(tripRepository.upsate(trip, id));
     }
 

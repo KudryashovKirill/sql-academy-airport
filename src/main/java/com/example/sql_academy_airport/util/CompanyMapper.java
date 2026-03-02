@@ -1,7 +1,6 @@
 package com.example.sql_academy_airport.util;
 
 import com.example.sql_academy_airport.dto.CompanyDto;
-import com.example.sql_academy_airport.model.Company;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

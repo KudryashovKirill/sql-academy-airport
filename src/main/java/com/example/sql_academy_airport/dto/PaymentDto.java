@@ -1,0 +1,26 @@
+package com.example.sql_academy_airport.dto;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDateTime;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Getter
+@Setter
+public class PaymentDto {
+    @NotNull
+    @Min(value = 1, message = "amount can`t be less than 0")
+    Integer amount;
+    @Min(value = 1, message = "unitPrice can`t be less than 0")
+    Integer unitPrice;
+    LocalDateTime date;
+    Long familyMemberId;
+    Long goodId;
+}

@@ -1,16 +1,16 @@
 package com.example.sql_academy_airport.service;
 
 import com.example.sql_academy_airport.dto.CompanyDto;
-import com.example.sql_academy_airport.dto.TripDto;
+import com.example.sql_academy_airport.dto.PaymentDto;
 
 import java.util.Map;
 
 public interface TripService {
-    TripDto create(TripDto tripDto);
+    PaymentDto create(PaymentDto paymentDto);
 
-    TripDto getById(Long id);
+    PaymentDto getById(Long id);
 
-    TripDto update(TripDto tripDto, Long id);
+    PaymentDto update(PaymentDto paymentDto, Long id);
 
     Map<String, Boolean> delete(Long id);
 }

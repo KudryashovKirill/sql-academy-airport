@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PassengerDto {
+public class GoodDto {
     @NotNull(message = "name must be not null")
     @Length(max = 100, message = "name can`t be more than 100 symbols")
-    String name;
+    String goodName;
 }
