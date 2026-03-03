@@ -1,6 +1,8 @@
 package com.example.sql_academy_airport.controller;
 
 import com.example.sql_academy_airport.dto.PaymentDto;
+import com.example.sql_academy_airport.dto.input.PaymentInputDto;
+import com.example.sql_academy_airport.dto.output.PaymentOutputDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +19,19 @@ public class PaymentController {
     }
 
     @PostMapping
-    public ResponseEntity<PaymentDto> create(@RequestBody PaymentDto paymentDto) {
-        return new ResponseEntity<>(paymentService.create(trip), HttpStatus.CREATED);
+    public ResponseEntity<PaymentOutputDto> create(@RequestBody PaymentInputDto paymentInputDto) {
+        return new ResponseEntity<>(paymentService.create(paymentInputDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PaymentDto> getById(@PathVariable Long id) {
+    public ResponseEntity<PaymentOutputDto> getById(@PathVariable Long id) {
         return new ResponseEntity<>(paymentService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<PaymentDto> update(@RequestBody PaymentDto paymentDto,
+    public ResponseEntity<PaymentOutputDto> update(@RequestBody PaymentInputDto paymentInputDto,
                                           @PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.update(paymentDto, id), HttpStatus.OK);
+        return new ResponseEntity<>(paymentService.update(paymentInputDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

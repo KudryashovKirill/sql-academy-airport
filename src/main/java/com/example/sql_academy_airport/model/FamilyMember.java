@@ -18,6 +18,7 @@ import java.util.List;
 public class FamilyMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     Long memberId;
     @Column(name = "status", nullable = false, length = 100)
     String status;

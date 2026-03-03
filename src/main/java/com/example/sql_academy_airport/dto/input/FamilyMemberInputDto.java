@@ -1,4 +1,4 @@
-package com.example.sql_academy_airport.dto;
+package com.example.sql_academy_airport.dto.input;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FamilyMemberDto {
+public class FamilyMemberInputDto {
     @NotBlank(message = "name must be not null")
     String memberName;
     @NotBlank(message = "status must be not null")

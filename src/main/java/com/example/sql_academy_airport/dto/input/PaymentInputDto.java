@@ -1,4 +1,4 @@
-package com.example.sql_academy_airport.dto;
+package com.example.sql_academy_airport.dto.input;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PaymentDto {
+public class PaymentInputDto {
     @NotNull
     @Min(value = 1, message = "amount can`t be less than 0")
     Integer amount;

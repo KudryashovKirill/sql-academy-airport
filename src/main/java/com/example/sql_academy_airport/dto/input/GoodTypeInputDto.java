@@ -1,4 +1,4 @@
-package com.example.sql_academy_airport.dto;
+package com.example.sql_academy_airport.dto.input;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
@@ -11,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GoodTypeDto {
+public class GoodTypeInputDto {
     @NotBlank(message = "goodTypeName can`t be empty")
     String goodTypeName;
 }

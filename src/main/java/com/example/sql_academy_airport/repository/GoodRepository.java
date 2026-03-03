@@ -9,7 +9,7 @@ public interface GoodRepository {
 
     Good getById(Long id);
 
-    Good update(Good passenger, Long id);
+    Good update(Good good, Long id);
 
     Map<String, Boolean> delete(Long id);
 }

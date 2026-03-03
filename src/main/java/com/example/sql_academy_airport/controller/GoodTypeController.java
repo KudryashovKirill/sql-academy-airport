@@ -1,6 +1,7 @@
 package com.example.sql_academy_airport.controller;
 
-import com.example.sql_academy_airport.dto.GoodTypeDto;
+import com.example.sql_academy_airport.dto.input.GoodTypeInputDto;
+import com.example.sql_academy_airport.dto.output.GoodTypeOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +20,19 @@ public class GoodTypeController {
     }
 
     @PostMapping
-    public ResponseEntity<GoodTypeDto> create(@RequestBody GoodTypeDto goodTypeDto) {
-        return new ResponseEntity<>(goodTypeService.create(goodTypeDto), HttpStatus.CREATED);
+    public ResponseEntity<GoodTypeOutputDto> create(@RequestBody GoodTypeInputDto goodTypeInputDto) {
+        return new ResponseEntity<>(goodTypeService.create(goodTypeInputDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GoodTypeDto> getById(@PathVariable Long id) {
+    public ResponseEntity<GoodTypeOutputDto> getById(@PathVariable Long id) {
         return new ResponseEntity<>(paymentService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GoodTypeDto> update(@RequestBody GoodTypeDto goodTypeDto,
+    public ResponseEntity<GoodTypeOutputDto> update(@RequestBody GoodTypeInputDto goodTypeInputDto,
                                               @PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.update(goodTypeDto, id), HttpStatus.OK);
+        return new ResponseEntity<>(paymentService.update(goodTypeInputDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

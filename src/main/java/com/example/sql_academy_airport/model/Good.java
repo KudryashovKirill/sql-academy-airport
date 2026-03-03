@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "family_members")
+@Table(name = "goods")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,11 +17,19 @@ import java.util.List;
 public class Good {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long memberId;
+    @Column(name = "good_id")
+    Long goodId;
     @Column(name = "good_name", nullable = false, length = 100)
     String goodName;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type", nullable = false)
-    List<GoodType> types = new ArrayList<>();
+    GoodType type;
+    @OneToMany(mappedBy = "good")
+    List<Payment> payments = new ArrayList<>();
 
+    public Good(Long goodId, String goodName, GoodType type) {
+        this.goodId = goodId;
+        this.goodName = goodName;
+        this.type = type;
+    }
 }

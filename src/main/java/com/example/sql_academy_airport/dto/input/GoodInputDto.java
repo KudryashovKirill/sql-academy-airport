@@ -1,5 +1,6 @@
-package com.example.sql_academy_airport.dto;
+package com.example.sql_academy_airport.dto.input;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,8 +13,10 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GoodDto {
+public class GoodInputDto {
     @NotNull(message = "name must be not null")
     @Length(max = 100, message = "name can`t be more than 100 symbols")
     String goodName;
+    @Min(value = 1, message = "type id can`t be 0 or less")
+    Long goodType;
 }
