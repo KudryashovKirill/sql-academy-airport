@@ -8,6 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -50,12 +53,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
                 """;
         try {
             return template.queryForObject(sqlQuery, (rs, rowNum) ->
-                    new Payment(
-                            rs.getLong("payment_id"),
-                            rs.getInt("amount"),
-                            rs.getInt("unit_price"),
-                            rs.getDate("date").toLocalDate()
-                    ), id);
+                    rowMapper(rs), id);
         } catch (EmptyResultDataAccessException e) {
             throw new NoSuchElementException("can`t get payment");
         }
@@ -91,5 +89,29 @@ public class PaymentRepositoryImpl implements PaymentRepository {
                 """;
         int countOfDeleted = template.update(sqlQuery, id);
         return Map.of("deleted", countOfDeleted > 0);
+    }
+
+    @Override
+    public List<Payment> findByFamilyMemberId(Long memberId) {
+        String sqlQuery = """
+                SELECT *
+                FROM payments
+                WHERE family_member = ?
+                """;
+        try {
+            return template.query(sqlQuery, (rs, rowNum) ->
+                    rowMapper(rs), memberId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new NoSuchElementException("no payments found by member id");
+        }
+    }
+
+    private Payment rowMapper(ResultSet rs) throws SQLException {
+        return new Payment(
+                rs.getLong("payment_id"),
+                rs.getInt("amount"),
+                rs.getInt("unit_price"),
+                rs.getDate("date").toLocalDate()
+        );
     }
 }

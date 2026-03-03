@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-@Setter
 public class PaymentInputDto {
     @NotNull
     @Min(value = 1, message = "amount can`t be less than 0")

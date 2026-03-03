@@ -1,6 +1,8 @@
 package com.example.sql_academy_airport.controller;
 
+import com.example.sql_academy_airport.dto.input.GoodInputDto;
 import com.example.sql_academy_airport.dto.output.GoodOutputDto;
+import com.example.sql_academy_airport.service.GoodService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +19,8 @@ public class GoodController {
     }
 
     @PostMapping
-    public ResponseEntity<GoodOutputDto> create(@RequestBody GoodOutputDto goodOutputDto) {
-        return new ResponseEntity<>(goodService.create(goodOutputDto), HttpStatus.CREATED);
+    public ResponseEntity<GoodOutputDto> create(@RequestBody GoodInputDto goodInputDto) {
+        return new ResponseEntity<>(goodService.create(goodInputDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -27,9 +29,9 @@ public class GoodController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GoodOutputDto> update(@RequestBody GoodOutputDto goodOutputDto,
-                                          @PathVariable Long id) {
-        return new ResponseEntity<>(goodService.update(goodOutputDto, id), HttpStatus.OK);
+    public ResponseEntity<GoodOutputDto> update(@RequestBody GoodInputDto goodInputDto,
+                                                @PathVariable Long id) {
+        return new ResponseEntity<>(goodService.update(goodInputDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

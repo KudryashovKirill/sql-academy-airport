@@ -1,8 +1,8 @@
 package com.example.sql_academy_airport.controller;
 
-import com.example.sql_academy_airport.dto.PaymentDto;
 import com.example.sql_academy_airport.dto.input.PaymentInputDto;
 import com.example.sql_academy_airport.dto.output.PaymentOutputDto;
+import com.example.sql_academy_airport.service.PaymentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class PaymentController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<PaymentOutputDto> update(@RequestBody PaymentInputDto paymentInputDto,
-                                          @PathVariable Long id) {
+                                                   @PathVariable Long id) {
         return new ResponseEntity<>(paymentService.update(paymentInputDto, id), HttpStatus.OK);
     }
 

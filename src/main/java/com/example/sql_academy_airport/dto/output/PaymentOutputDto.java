@@ -1,6 +1,5 @@
 package com.example.sql_academy_airport.dto.output;
 
-import com.example.sql_academy_airport.model.Good;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,5 +18,5 @@ public class PaymentOutputDto {
     Integer unitPrice;
     LocalDateTime date;
     FamilyMemberOutputDto familyMember;
-    Good good;
+    GoodOutputDto good;
 }

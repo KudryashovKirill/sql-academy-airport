@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -18,5 +17,4 @@ public class FamilyMemberOutputDto {
     String status;
     String memberName;
     LocalDate birthday;
-    List<PaymentOutputDto> payments;
 }

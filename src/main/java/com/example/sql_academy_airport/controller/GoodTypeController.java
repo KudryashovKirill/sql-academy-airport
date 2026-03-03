@@ -2,6 +2,7 @@ package com.example.sql_academy_airport.controller;
 
 import com.example.sql_academy_airport.dto.input.GoodTypeInputDto;
 import com.example.sql_academy_airport.dto.output.GoodTypeOutputDto;
+import com.example.sql_academy_airport.service.GoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,17 +27,17 @@ public class GoodTypeController {
 
     @GetMapping("/{id}")
     public ResponseEntity<GoodTypeOutputDto> getById(@PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(goodTypeService.getById(id), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<GoodTypeOutputDto> update(@RequestBody GoodTypeInputDto goodTypeInputDto,
-                                              @PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.update(goodTypeInputDto, id), HttpStatus.OK);
+                                                    @PathVariable Long id) {
+        return new ResponseEntity<>(goodTypeService.update(goodTypeInputDto, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> delete(@PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.delete(id), HttpStatus.OK);
+        return new ResponseEntity<>(goodTypeService.delete(id), HttpStatus.OK);
     }
 }
