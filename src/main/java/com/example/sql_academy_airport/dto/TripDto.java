@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -27,8 +26,8 @@ public class TripDto {
     String townTo;
     LocalDateTime timeOut;
     LocalDateTime timeIn;
-    Company company;
-    List<PassInTrip> passengers;
+    Long companyId;
+//    List<PassInTrip> passengers;
 
     public TripDto(String plane, String townFrom, String townTo, LocalDateTime timeOut, LocalDateTime timeIn) {
         this.plane = plane;

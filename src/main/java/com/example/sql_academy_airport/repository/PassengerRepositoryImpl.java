@@ -19,9 +19,11 @@ public class PassengerRepositoryImpl implements PassengerRepository {
     private SimpleJdbcInsert insert;
 
     @Autowired
-    public PassengerRepositoryImpl(JdbcTemplate template, SimpleJdbcInsert insert) {
+    public PassengerRepositoryImpl(JdbcTemplate template) {
         this.template = template;
-        this.insert = insert;
+        this.insert = new SimpleJdbcInsert(template)
+                .withTableName("passengers")
+                .usingGeneratedKeyColumns("id");
     }
 
     @Override
@@ -38,7 +40,7 @@ public class PassengerRepositoryImpl implements PassengerRepository {
     public Passenger getById(Long id) {
         String sqlQuery = """
                 SELECT *
-                FROM passenger
+                FROM passengers
                 WHERE id = ?
                 """;
         try {
@@ -53,7 +55,7 @@ public class PassengerRepositoryImpl implements PassengerRepository {
     @Override
     public Passenger update(Passenger passenger, Long id) {
         String sqlQuery = """
-                UPDATE passenger
+                UPDATE passengers
                 SET name = ?
                 WHERE id = ?
                 """;
@@ -68,7 +70,7 @@ public class PassengerRepositoryImpl implements PassengerRepository {
     @Override
     public Map<String, Boolean> delete(Long id) {
         String sqlQuery = """
-                DELETE FROM passenger
+                DELETE FROM passengers
                 WHERE id = ?
                 """;
         int countOfDeletedPassengers = template.update(sqlQuery, id);

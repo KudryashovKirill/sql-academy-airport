@@ -5,9 +5,11 @@ import com.example.sql_academy_airport.model.Passenger;
 import com.example.sql_academy_airport.repository.PassengerRepository;
 import com.example.sql_academy_airport.util.PassengerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+@Service
 public class PassengerServiceImpl implements PassengerService {
     private PassengerRepository passengerRepository;
     private PassengerMapper mapper;

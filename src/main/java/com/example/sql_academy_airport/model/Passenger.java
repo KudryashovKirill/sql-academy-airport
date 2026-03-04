@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "passenger")
+@Table(name = "passengers")
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)

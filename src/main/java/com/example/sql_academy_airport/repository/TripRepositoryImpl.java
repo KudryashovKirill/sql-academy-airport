@@ -23,7 +23,7 @@ public class TripRepositoryImpl implements TripRepository {
     public TripRepositoryImpl(JdbcTemplate template, CompanyRepository companyRepository) {
         this.template = template;
         this.insert = new SimpleJdbcInsert(template)
-                .withTableName("trip")
+                .withTableName("trips")
                 .usingGeneratedKeyColumns("id");
         this.companyRepository = companyRepository;
     }
@@ -45,7 +45,7 @@ public class TripRepositoryImpl implements TripRepository {
     public Trip getById(Long id) {
         String sqlQuery = """
                 SELECT *
-                FROM trip
+                FROM trips
                 WHERE id = ?
                 """;
         try {
@@ -63,7 +63,7 @@ public class TripRepositoryImpl implements TripRepository {
     @Override
     public Trip update(Trip trip, Long id) {
         String sqlQuery = """
-                UPDATE trip
+                UPDATE trips
                 SET plane = ?, town_from = ?, town_to = ?, time_out = ?, time_in = ?
                 WHERE id = ?
                 """;
@@ -79,7 +79,7 @@ public class TripRepositoryImpl implements TripRepository {
     @Override
     public Map<String, Boolean> delete(Long id) {
         String sqlQuery = """
-                DELETE FROM trip
+                DELETE FROM trips
                 WHERE id = ?
                 """;
         int countOfDeletedTrips = template.update(sqlQuery, id);

@@ -28,7 +28,7 @@ public class PassengerController {
         return new ResponseEntity<>(passengerService.getById(id), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PassengerDto> update(@RequestBody PassengerDto passengerDto,
                                           @PathVariable Long id) {
         return new ResponseEntity<>(passengerService.update(passengerDto, id), HttpStatus.OK);

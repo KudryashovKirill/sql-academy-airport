@@ -28,7 +28,7 @@ public class TripController {
         return new ResponseEntity<>(tripService.getById(id), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<TripDto> update(@RequestBody TripDto tripDto,
                                           @PathVariable Long id) {
         return new ResponseEntity<>(tripService.update(tripDto, id), HttpStatus.OK);

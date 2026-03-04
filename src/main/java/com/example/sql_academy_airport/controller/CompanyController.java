@@ -27,7 +27,7 @@ public class CompanyController {
         return new ResponseEntity<>(companyService.getById(id), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CompanyDto> update(@RequestBody CompanyDto companyDto,
                                           @PathVariable Long id) {
         return new ResponseEntity<>(companyService.update(companyDto, id), HttpStatus.OK);

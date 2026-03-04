@@ -22,7 +22,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     public CompanyRepositoryImpl(JdbcTemplate template) {
         this.template = template;
         this.insert = new SimpleJdbcInsert(template)
-                .withTableName("company")
+                .withTableName("companies")
                 .usingGeneratedKeyColumns("id");
     }
 
@@ -38,7 +38,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     public Company getById(Long id) {
         String sqlQuery = """
                 SELECT *
-                FROM company
+                FROM companies
                 WHERE id = ?
                 """;
         try {
@@ -53,7 +53,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     @Override
     public Company update(Company company, Long id) {
         String sqlQuery = """
-                UPDATE company
+                UPDATE companies
                 SET name = ?
                 WHERE id = ?
                 """;
@@ -68,7 +68,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     @Override
     public Map<String, Boolean> delete(Long id) {
         String sqlQuery = """
-                DELETE FROM company
+                DELETE FROM companies
                 WHERE id = ?
                 """;
         int countOfDeletedCompanies = template.update(sqlQuery, id);
