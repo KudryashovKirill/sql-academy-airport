@@ -3,10 +3,14 @@ package com.example.sql_academy_airport.util;
 import com.example.sql_academy_airport.dto.CompanyDto;
 import com.example.sql_academy_airport.model.Company;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface CompanyMapper {
     CompanyDto toDto(Company company);
 
     Company toEntity(CompanyDto companyDto);
+
+    void updateEntityFromDto(CompanyDto dto,
+                             @MappingTarget Company company);
 }

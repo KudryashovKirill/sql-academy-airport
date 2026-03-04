@@ -2,6 +2,7 @@ package com.example.sql_academy_airport.service;
 
 import com.example.sql_academy_airport.dto.CompanyDto;
 import com.example.sql_academy_airport.model.Company;
+import com.example.sql_academy_airport.repository.CompanyRepository;
 import com.example.sql_academy_airport.util.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyDto update(CompanyDto companyDto, Long id) {
         Company company = mapper.toEntity(companyDto);
+        mapper.updateEntityFromDto(companyDto, company);
         return mapper.toDto(companyRepository.update(company, id));
     }
 

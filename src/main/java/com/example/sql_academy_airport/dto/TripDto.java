@@ -3,10 +3,7 @@ package com.example.sql_academy_airport.dto;
 import com.example.sql_academy_airport.model.Company;
 import com.example.sql_academy_airport.model.PassInTrip;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 
@@ -15,6 +12,7 @@ import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class TripDto {

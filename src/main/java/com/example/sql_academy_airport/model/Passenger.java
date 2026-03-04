@@ -29,8 +29,4 @@ public class Passenger {
         this.id = id;
         this.name = name;
     }
-
-    public Passenger(String name) {
-        this.name = name;
-    }
 }

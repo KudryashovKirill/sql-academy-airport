@@ -45,24 +45,5 @@ public class Trip {
         this.timeOut = timeOut;
         this.timeIn = timeIn;
     }
-
-    public Trip(String plane, String townFrom, String townTo, LocalDateTime timeOut, LocalDateTime timeIn) {
-        this.plane = plane;
-        this.townFrom = townFrom;
-        this.townTo = townTo;
-        this.timeOut = timeOut;
-        this.timeIn = timeIn;
-    }
-
-    public Trip(Long id, String plane, String townFrom, String townTo, LocalDateTime timeOut, LocalDateTime timeIn,
-                Company company) {
-        this.id = id;
-        this.plane = plane;
-        this.townFrom = townFrom;
-        this.townTo = townTo;
-        this.timeOut = timeOut;
-        this.timeIn = timeIn;
-        this.company = company;
-    }
 }
 
